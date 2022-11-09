@@ -1,0 +1,89 @@
+* {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #eee
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 1200px;
+    background-color: #500;
+}
+
+.main-container {
+    margin: 0 auto;
+    width: 1200px;
+    height: 600px;
+}
+
+.header {
+    margin: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.cards-background {
+    margin: 0 auto;
+    height: 534px;
+    padding: 16px;
+    background-color: #900;
+}
+
+.cards-container {
+    margin: 2px solid white;
+    margin: 0 auto;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.card-container {
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #aaa;
+    border-radius: 10px;
+    width: 120px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-card {
+    margin: 0;
+    width: 100px;
+    height: 140px;
+    border-radius: 10px;
+    background-size: cover;
+    text-align: center;
+}
+
+.inactive {
+    display: flex;
+}
+
+.inactive>.inner-card {
+    background-image: url("./assets/pattern.png");
+}
+
+.active {
+    display: none;
+}
