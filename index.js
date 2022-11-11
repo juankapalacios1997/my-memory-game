@@ -4,7 +4,7 @@ let image2 = "url('./assets/auron.jfif')"
 let image3 = "url('./assets/explosion.jpg')"
 let image4 = "url('./assets/dora.jfif')"
 let image5 = "url('./assets/mrclean.jpg')"
-let image6 = "url('./assets/richi-phelps.jfif')"
+let image6 = "url('./assets/nicolas-maduro.jfif')"
 
 let cards = document.querySelectorAll('.card');
 console.log(cards);
@@ -15,7 +15,7 @@ let evenCards = document.querySelectorAll(".even");
 
 const images = [image1, image2, image3, image4, image5, image6];
 
-const randomizeImages = () => {
+const shuffleImages = () => {
     //Generate an array of random numbers between 0 and 5
 
     const randomNumbers = (n) => {
@@ -53,20 +53,21 @@ const randomizeImages = () => {
     })
 }
 
-randomizeImages();
+shuffleImages();
 
 let cardOne;
 let cardTwo;
+let disabledDeck = false;
 
 const flipCard = (e) => {
     let clickedCard = e.target;
-    if (clickedCard !== cardOne) {
+    if (clickedCard !== cardOne && !disabledDeck) {
         clickedCard.classList.add("flip");
         if (!cardOne) {
             return cardOne = clickedCard;
         } 
         cardTwo = clickedCard
-        
+        disabledDeck = true;
         let cardOneDiv= cardOne.classList[1];
         let cardTwoDiv = cardTwo.classList[1];
         matchCards(cardOneDiv, cardTwoDiv);
@@ -74,11 +75,32 @@ const flipCard = (e) => {
 }
 
 const matchCards = (img1, img2) => {
-    console.log(img1, img2)
-    if (img1 == img2) {
-        return console.log("Same Cards")
+    console.log(disabledDeck)
+    if (img1 === img2) {
+        setTimeout (() => {
+            cardOne.removeEventListener("click", flipCard);
+            cardTwo.removeEventListener("click", flipCard);
+            cardOne = cardTwo = "";
+            return disabledDeck = true;
+        }, 400)
+        setTimeout(() => {
+            return disabledDeck = false;
+        }, 800)
+    } else {
+        setTimeout(() => {
+            cardOne.classList.add("shake");
+            cardTwo.classList.add("shake");
+        }, 400)
+
+        setTimeout(() => {
+            cardOne.classList.remove("shake", "flip")
+            cardTwo.classList.remove("shake", "flip")
+            cardOne = cardTwo = "";
+            console.log(cardOne, cardTwo)
+            disabledDeck = false;
+            console.log(disabledDeck);
+        }, 800)
     }
-    console.log("Not matched")
 }
 
 cards.forEach(card => {
