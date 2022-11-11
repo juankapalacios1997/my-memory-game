@@ -42,7 +42,6 @@ body {
 }
 
 .cards-container {
-    margin: 2px solid white;
     margin: 0 auto;
     width: 900px;
     display: grid;
@@ -55,9 +54,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    perspective: 800px;
 }
 
 .card {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
     background-color: #aaa;
     border-radius: 10px;
     width: 120px;
@@ -65,9 +68,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
-.inner-card {
+.card-container .card .view {
+    pointer-events: none;
+    user-select: none;
+}
+
+.inactive-card, .active-card {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-container .card {
+    transform: rotateY(0);
+}
+
+.card-container .card.flip {
+    transform: rotateY(180deg);
+}
+
+.view {
+    position: absolute;
     margin: 0;
     width: 100px;
     height: 140px;
@@ -76,14 +99,13 @@ body {
     text-align: center;
 }
 
-.inactive {
-    display: flex;
+.inactive-card {
+    background-image: url("./assets/pattern.png")
 }
 
-.inactive>.inner-card {
-    background-image: url("./assets/pattern.png");
+.card .inactive-card {
+    transform: rotateY(0);
 }
-
-.active {
-    display: none;
+.card .active-card {
+    transform: rotateY(180deg);
 }
