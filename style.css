@@ -170,6 +170,39 @@ body {
     transform: rotateY(180deg);
 }
 
-@media screen {
-    
+@media only screen and (max-width: 600px) {
+    body {
+        width: 400px;
+    }
+
+    .main-container {
+        margin: 0 auto;
+        width: 400px;
+    }
+
+    .you-won {
+        width: 100%;
+        height: auto;
+    }
+
+    .cards-container {
+        width: 360px;
+        height: 480px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .card-container {
+        margin: 8px;
+    }
+
+    .card {
+        width: 60px;
+        height: 80px;
+    }
+
+    .view {
+        width: 50px;
+        height: 70px;
+    }
 }
