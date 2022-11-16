@@ -1,13 +1,14 @@
 
-let image1 = "url('./assets/goku-pelon.jfif')"
-let image2 = "url('./assets/auron.jfif')"
-let image3 = "url('./assets/explosion.jpg')"
-let image4 = "url('./assets/dora.jfif')"
-let image5 = "url('./assets/mrclean.jpg')"
-let image6 = "url('./assets/nicolas-maduro.jfif')"
+let image1 = "url('./assets/cr7_balondeoro.jpg')"
+let image2 = "url('./assets/cr7_champions.jpeg')"
+let image3 = "url('./assets/cr7_juventus.jpg')"
+let image4 = "url('./assets/cr7_portugal.jpg')"
+let image5 = "url('./assets/Cristiano_Ronaldo_2018.jpg')"
+let image6 = "url('./assets/cr7.jpg')"
 
 let cards = document.querySelectorAll('.card');
-console.log(cards);
+
+let youWin = document.getElementById('you-won')
 
 
 let oddCards = document.querySelectorAll(".odd");
@@ -58,6 +59,7 @@ shuffleImages();
 let cardOne;
 let cardTwo;
 let disabledDeck = false;
+let counter = 0;
 
 const flipCard = (e) => {
     let clickedCard = e.target;
@@ -71,11 +73,14 @@ const flipCard = (e) => {
         let cardOneDiv= cardOne.classList[1];
         let cardTwoDiv = cardTwo.classList[1];
         matchCards(cardOneDiv, cardTwoDiv);
+        if (counter == 6) {
+            setTimeout(() => youWin.style.display = "flex", 600); 
+        }
     }
 }
 
 const matchCards = (img1, img2) => {
-    console.log(disabledDeck)
+    // console.log(disabledDeck)
     if (img1 === img2) {
         setTimeout (() => {
             cardOne.removeEventListener("click", flipCard);
@@ -86,6 +91,7 @@ const matchCards = (img1, img2) => {
         setTimeout(() => {
             return disabledDeck = false;
         }, 800)
+        return counter +=1;
     } else {
         setTimeout(() => {
             cardOne.classList.add("shake");
