@@ -181,8 +181,23 @@ body {
     }
 
     .you-won {
-        width: 100%;
-        height: auto;
+        margin-top: 240px;
+        width: 400px;
+        height: 160px;
+    }
+
+    .you-won-inner {
+        width: 360px;
+        height: 120px;
+    }
+
+    .you-won-inner>h1 {
+        font-size: 1.5rem;
+    }
+
+    .you-won-inner img {
+        height: 100px;
+        width: auto;
     }
 
     .cards-background {
