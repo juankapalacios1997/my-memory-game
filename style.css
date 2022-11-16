@@ -185,6 +185,10 @@ body {
         height: auto;
     }
 
+    .cards-background {
+        height: 488px;
+    }
+
     .cards-container {
         width: 360px;
         height: 480px;
